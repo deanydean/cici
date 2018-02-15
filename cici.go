@@ -17,11 +17,13 @@ func main() {
 	listenStr := flag.String("listen", ":5151", "The address to listen on")
 	flag.Parse()
 
+	if *httpEnabled {
+		http.Start(listenStr)
+	}
+
 	if *watchingEnabled {
 		watch.Start()
 	}
 
-	if *httpEnabled {
-		http.Start(listenStr)
-	}
+	select {}
 }

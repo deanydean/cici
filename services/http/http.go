@@ -23,5 +23,8 @@ func Start(listenStr *string) {
 	}
 
 	fmt.Println("Listening for HTTP on", *listenStr)
-	log.Fatal(server.ListenAndServe())
+
+	go func() {
+		log.Fatal(server.ListenAndServe())
+	}()
 }

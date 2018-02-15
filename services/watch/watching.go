@@ -5,8 +5,9 @@ import (
 	"os"
 	"path"
 
-	"github.com/oddcyborg/watchit/core/utils"
-	"github.com/oddcyborg/watchit/core/watchfiles"
+	"github.com/deanydean/clockwork/core/triggers"
+	"github.com/deanydean/clockwork/core/utils"
+	"github.com/deanydean/clockwork/core/watchfiles"
 )
 
 // Start the watch service
@@ -24,5 +25,8 @@ func Start() {
 
 	if watcher == nil {
 		fmt.Println("If I could, I'd watch stuff from", watchFileName)
+		return
 	}
+
+	watcher.Watch(triggers.NewTextReporterTrigger("Something happened!"))
 }
